@@ -21,6 +21,7 @@ public class Day02_GetPageSource {
             System.out.println("FAIL");
             System.out.println(pageSource + "DOESN'T EXIST ON THE PAGE");
         }
+        driver.quit();
 
 
     }
