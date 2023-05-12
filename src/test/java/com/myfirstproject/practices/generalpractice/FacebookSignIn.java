@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 public class FacebookSignIn extends TestBase {
 
     @Test
-    public void signInTest(){
+    public void signInTest() throws InterruptedException {
 //        Go to https://www.facebook.com
         driver.get("https://www.facebook.com");
 
@@ -18,15 +18,19 @@ public class FacebookSignIn extends TestBase {
 
 //        Enter a firstname
         driver.findElement(By.name("firstname")).sendKeys("John");
+        Thread.sleep(2000);
 
 //        Enter  a lastname
         driver.findElement(By.name("lastname")).sendKeys("Doe");
+        Thread.sleep(2000);
 
 //        Enter an email
         driver.findElement(By.xpath("(//input[@type='text'])[4]")).sendKeys("johndoe@gmail.com");
+        Thread.sleep(2000);
 
 //        Enter a password
         driver.findElement(By.xpath("(//input[@type='password'])[2]")).sendKeys("johndoe1234");
+        Thread.sleep(2000);
 
 //        Select a day
         WebElement day = driver.findElement(By.id("day"));
