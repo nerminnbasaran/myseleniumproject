@@ -9,6 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Day09_FileDownloadTest extends TestBase {
+    /*
+    We use send keys functions files if the html is INPUT TYPE = FILE
+    If other elements is used to upload files, then we can ROBOT class in JAVA
+     */
 
     @Test
     public void downloadTest() throws InterruptedException {
