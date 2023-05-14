@@ -1,6 +1,7 @@
 package com.myfirstproject.practices.practice02;
 
 import com.myfirstproject.utilities.TestBase;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -33,7 +34,8 @@ public class Q04_HoverOver extends TestBase {
         driver.findElement(By.xpath("(//a[.='Book Now'])[2]")).click();
 
 //        Verify url contains "services"
-
+        String url = driver.getCurrentUrl();
+        Assert.assertTrue(url.contains("services"));
 
 
     }
