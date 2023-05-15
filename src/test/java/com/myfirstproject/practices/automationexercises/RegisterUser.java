@@ -1,22 +1,17 @@
-package com.exercise;
+package com.myfirstproject.practices.automationexercises;
 
 import com.github.javafaker.Faker;
-import com.github.javafaker.Name;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
-import java.util.Date;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 

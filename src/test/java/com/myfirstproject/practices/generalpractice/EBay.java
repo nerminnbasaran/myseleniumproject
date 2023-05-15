@@ -4,11 +4,10 @@ import com.myfirstproject.utilities.TestBase;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class Task01 extends TestBase {
+public class EBay extends TestBase {
         /*
     Go to ebay page
     Click on electronics section

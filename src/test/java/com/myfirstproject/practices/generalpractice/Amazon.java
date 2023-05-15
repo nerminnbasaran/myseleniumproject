@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class Task03 extends TestBase {
+public class Amazon extends TestBase {
 
     @Test
     public void amazonTest(){

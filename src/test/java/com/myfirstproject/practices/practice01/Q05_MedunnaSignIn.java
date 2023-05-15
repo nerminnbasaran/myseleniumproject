@@ -1,6 +1,7 @@
 package com.myfirstproject.practices.practice01;
 
 import com.myfirstproject.utilities.TestBase;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
@@ -31,7 +32,8 @@ public class Q05_MedunnaSignIn extends TestBase {
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
         //Assert that you signed in
-
+        String accountCorrection =  driver.findElement(By.xpath("//*[text()='Administration']")).getText();
+        Assert.assertEquals("Administration",accountCorrection);
 
 
 

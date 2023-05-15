@@ -1,7 +1,5 @@
 package com.myfirstproject.practices.generalpractice;
 
-import com.myfirstproject.utilities.TestBase;
-import org.bouncycastle.asn1.dvcs.DVCSObjectIdentifiers;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class Task02 {
+public class GoogleSearch {
 
     protected static WebDriver driver;
     protected static String desktopResult;
