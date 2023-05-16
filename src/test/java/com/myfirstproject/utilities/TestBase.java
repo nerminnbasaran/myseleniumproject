@@ -4,10 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
@@ -55,6 +52,11 @@ public abstract class TestBase {
         String now = new SimpleDateFormat("yyyMMddhhmmss").format(new Date());
         String path = System.getProperty("user.dir")+"/test-output/ElementScreenshots/"+now+"image.png";
         FileUtils.copyFile(image,new File(path));
+    }
+    // This Method is used to click on given element By using JSExecutor
+    public static void clickByJS(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click()",element);
     }
 
 

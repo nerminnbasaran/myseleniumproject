@@ -3,6 +3,7 @@ package com.myfirstproject.practices.automationexercises;
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -182,6 +183,31 @@ public class RegisterUser {
 
 
 
+    }
+
+    @Test
+    public void registerUserWithExistingMail(){
+//        1. Launch browser, 2. Navigate to url 'http://automationexercise.com'
+        driver.get("http://automationexercise.com");
+
+//        3. Verify that home page is visible successfully
+        Assert.assertTrue(driver.findElement(By.xpath("//*[.='Brands']")).isDisplayed());
+
+//        4. Click on 'Signup / Login' button
+        driver.findElement(By.xpath("//*[text()=' Signup / Login']")).click();
+
+//        5. Verify 'New User Signup!' is visible
+        Assert.assertTrue(driver.findElement(By.xpath("(//h2)[3]")).isDisplayed());
+
+//        6. Enter name and already registered email address
+        driver.findElement(By.name("name")).sendKeys("John Doe");
+        driver.findElement(By.name("email")).sendKeys("j.johndoe@gmail.com");
+
+//        7. Click 'Signup' button
+        driver.findElement(By.xpath("//button[.='Signup']")).click();
+
+//        8. Verify error 'Email Address already exist!' is visible
+        Assert.assertTrue(driver.findElement(By.xpath("(//form/p)[1]")).isDisplayed());
     }
 
 
