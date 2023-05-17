@@ -17,35 +17,30 @@ public class Amazon extends TestBase {
         driver.get("https://amazon.com");
 
 //    Print all the options in the 'Departments' dropdown on the left side of the search box
-        WebElement dropDown = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
+        WebElement dropDown = driver.findElement(By.xpath("//*[@id='searchDropdownBox']"));
 
         Select options = new Select(dropDown);
-        options.selectByVisibleText("All Departments");
 
-
+        for(WebElement w:options.getOptions()){
+            System.out.println("w.getText() = " + w.getText());
+        }
+        System.out.println("*******************************");
 
 //    Search for each first five options and print titles
-
-//        for (int i=1;i<6 ;i++){
-//            Thread.sleep(2000);
-//            WebElement firstFiveOptions = driver.findElement(By.xpath("(//div[@role='button'])["+i+"]"));
-//            System.out.println("firstFiveOptions titles = " + firstFiveOptions.getText());
-//
-//        }
-        for (int i=1;i<6 ;i++){
-            driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']")).click();
+        int index=1;
+        for (WebElement w: options.getOptions()){
+            Select option = new Select(driver.findElement(By.xpath("//*[@id='searchDropdownBox']")));
+            option.selectByIndex(index);
+            driver.findElement(By.xpath("//*[@type='submit']")).click();
+            System.out.println(driver.getTitle());
             Thread.sleep(2000);
-            WebElement firstFiveOptions = driver.findElement(By.xpath("(//div[@role='button'])["+i+"]"));
+            driver.navigate().back();
             Thread.sleep(2000);
-            clickByJS(firstFiveOptions);
-            Thread.sleep(2000);
-            System.out.println("firstFiveOptions titles = " + driver.getTitle());
-            Thread.sleep(2000);
-            driver.findElement(By.id("nav-logo-sprites")).click();
+            index++;
+            if (index==6){
+                break;
+            }
         }
-
-
-
 
 
     }

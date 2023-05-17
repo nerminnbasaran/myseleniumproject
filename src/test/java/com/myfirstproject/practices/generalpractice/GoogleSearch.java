@@ -10,7 +10,8 @@ import java.time.Duration;
 
 public class GoogleSearch {
 
-    protected static WebDriver driver;
+    static WebDriver driver;
+    WebElement searchbox;
     protected static String desktopResult;
     protected static String smartPhoneResult;
     protected static String laptopResult;
@@ -36,9 +37,9 @@ public void googleSearchTest(){
     public void searchDesktop() {
 
 //     -Type "Desktop" in the search box and print the number of results
-        WebElement searchBox = driver.findElement(By.id("APjFqb"));
-        searchBox.sendKeys("Desktop");
-        searchBox.submit();
+        searchbox = driver.findElement(By.id("APjFqb"));
+        searchbox.sendKeys("Desktop");
+        searchbox.submit();
 
     }
 
@@ -46,9 +47,9 @@ public void googleSearchTest(){
     public void smartphoneTest() throws InterruptedException {
 
 //     -Type "Smartphone" in the search box and print the number of results
-        WebElement searchBox = driver.findElement(By.id("APjFqb"));
-        searchBox.sendKeys("Smartphone");
-        searchBox.submit();
+        searchbox = driver.findElement(By.id("APjFqb"));
+        searchbox.sendKeys("Smartphone");
+        searchbox.submit();
 
     }
 
@@ -56,31 +57,24 @@ public void googleSearchTest(){
     public void laptopTest() throws InterruptedException {
 
 //     -Type "Laptop" in the search box and print the number of results
-        WebElement searchBox = driver.findElement(By.id("APjFqb"));
-        searchBox.sendKeys("Laptop");
-        searchBox.submit();
+        searchbox = driver.findElement(By.id("APjFqb"));
+        searchbox.sendKeys("Laptop");
+        searchbox.submit();
 
     }
 
 //    NOTE: Print the result numbers in After method
     @After
     public void printingResults(){
-        String desktopResult = driver.findElement(By.id("result-stats")).getText();
-        System.out.println("desktopResult = " + desktopResult);
-
-        String smartPhoneResult = driver.findElement(By.id("result-stats")).getText();
-        System.out.println("smartPhoneResult = " + smartPhoneResult);
-
-        String laptopResult = driver.findElement(By.id("result-stats")).getText();
-        System.out.println("laptopResult = " + laptopResult);
+        String [] result = driver.findElement(By.id("result-stats")).getText().split(" ");
+        System.out.println("Number of search result = " + result[1]);
 
     }
 
 //    Close driver with AfterClass method
     @AfterClass
-    public static void tearDown() throws InterruptedException {
-        Thread.sleep(1000);
-        driver.quit();
+    public static void tearDown(){
+        driver.close();
     }
 
 
