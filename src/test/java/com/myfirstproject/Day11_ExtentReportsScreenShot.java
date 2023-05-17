@@ -1,52 +1,30 @@
 package com.myfirstproject;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.myfirstproject.utilities.TestBase;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class Day10_ExtentReports extends TestBase {
-
+public class Day11_ExtentReportsScreenShot extends TestBase {
     /*
-    -What is extent report?
-    Extent Report is a library to generate automation reports
+    So for we can capture screenshot of the entire page and save under test output folder
+    So far we can capture the screenshot of specific elements and save under test output folder
+    NOW WE WILL ATTACH SOME SCREENSHOTS ON THE EXTENT REPORTS
      */
-    @Test
-    public void extentReportTests1(){
-
-        String text = "selenium";
-        if(text.contains("e")){
-            extentTest.pass("PASSED : "+text+ " CONTAINS e");
-        }else{
-            extentTest.fail("FAILED : "+text+ " DOESN'T CONTAINS THAT LETTER");
-        }
-
-//        pass is used in the lines we are expecting to pass. this is use a lot
-        extentTest.pass("PASSED");
-//        fail is used in the lines we are expecting to fail such as else condition above
-        extentTest.fail("FAILED");
-
-        extentTest.info("INFO");
-        extentTest.skip("SKIP");
-        extentTest.warning("WARNING");
-
-    }
 
     @Test
-    public void extentReportsTest() throws IOException, InterruptedException {
+    public void extentReportsScreenShot() throws IOException, InterruptedException {
 
 //        Given user is on https://testcenter.techproeducation.com/index.php?page=autocomplete
         driver.get("https://testcenter.techproeducation.com/index.php?page=autocomplete");
 
 //        When user type “uni” in the search box
-        extentTest.pass("Taking the screenshot of the home page");
+        extentTest
+                .pass("Taking the screenshot of the home page")
+                .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
 //        TAKE SCREENSHOT
         takeScreenshotOfTheEntirePage();
 
@@ -54,7 +32,9 @@ public class Day10_ExtentReports extends TestBase {
         Thread.sleep(2000);
 
 //        And select the ‘United Kingdom’ from the suggestions
-        extentTest.pass("Selecting the United Kingdom option");
+        extentTest
+                .pass("Selecting the United Kingdom option")
+                        .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
 //        TAKE SCREENSHOT
         takeScreenshotOfTheEntirePage();
 //        TAKING SCREENSHOT OF ONLY UNITED KINGDOM ELEMENT
@@ -66,7 +46,9 @@ public class Day10_ExtentReports extends TestBase {
         Thread.sleep(2000);
 
 //        And click on submit button
-        extentTest.pass("Clicking on the submit button");
+        extentTest
+                .pass("Clicking on the submit button")
+                .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
 //        TAKE SCREENSHOT
         takeScreenshotOfTheEntirePage();
         driver.findElement(By.xpath("//input[@type='button']")).click();
@@ -75,13 +57,19 @@ public class Day10_ExtentReports extends TestBase {
 //        TAKE SCREENSHOT
         takeScreenshotOfTheEntirePage();
 //        TAKING THE SCREENSHOT OF THE RESULT ELEMENT
-        extentTest.pass("Taking the screenshot of result element");
+        extentTest
+                .pass("Taking the screenshot of result element")
+                .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
         WebElement result = driver.findElement(By.id("result"));
         takeScreenshotOfThisElement(result);
 
 //        Then verify the result contains ‘United Kingdom’
-        extentTest.pass("Asserting the result contains United Kingdom");
+        extentTest
+                .pass("Asserting the result contains United Kingdom")
+                .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
         Assert.assertTrue(driver.findElement(By.id("result")).getText().contains("United Kingdom"));
 
+
     }
+
 }

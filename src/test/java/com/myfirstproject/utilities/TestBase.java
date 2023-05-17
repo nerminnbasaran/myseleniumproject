@@ -25,9 +25,10 @@ public abstract class TestBase {
     protected static ExtentTest extentTest;
     @BeforeClass
     public static void extentReportsSetup(){
+//        WHAT WILL BE REPORT NAME AND WHERE THE REPORT IS CREATED
 //        PATH
         String now = new SimpleDateFormat("yyyMMddhhmmss").format(new Date());
-        String path = System.getProperty("user.dir")+"/test-output/Reports"+now+"extent_reports.html";
+        String path = System.getProperty("user.dir")+"/test-output/Reports/"+now+"extent_reports.html";
 
 //        Create the HTML template using extent html reporter
         extentHtmlReporter = new ExtentHtmlReporter(path);
@@ -103,6 +104,38 @@ public abstract class TestBase {
         String path = System.getProperty("user.dir")+"/test-output/ElementScreenshots/"+now+"image.png";
         FileUtils.copyFile(image,new File(path));
     }
+
+    /*
+    This method captures the image and returns the path of that image
+    RETURN TYPE : static String
+    return new File(path).getAbsolutePath();
+     */
+    public static String takeScreenshotOfTheEntirePageAsString() throws IOException {
+
+//        1. TakeScreenShot class with getScreenShotAs method to capture the screenshot
+        File image = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+//        2. Create a path to save the image
+//           Create a date for giving dynamic name otherwise the screenshots overrides
+        String now = new SimpleDateFormat("yyyMMddhhmmss").format(new Date());//getting local date in this format
+
+//                       CURRENT PROJECT FOLDER        foldername  subfoldername   imagename
+        String path = System.getProperty("user.dir")+"/test-output/Screenshots/" +now+"image.png";
+
+//        3. Save the image in the path as a file
+        FileUtils.copyFile(image,new File(path));
+
+//        GETTING THE ABSOLUTE PATH OF THE IMAGE PATH THAT IS STRING
+        return new File(path).getAbsolutePath();
+    }
+
+
+
+
+
+
+
+
     // This Method is used to click on given element By using JSExecutor
     public static void clickByJS(WebElement element){
         JavascriptExecutor js = (JavascriptExecutor)driver;
