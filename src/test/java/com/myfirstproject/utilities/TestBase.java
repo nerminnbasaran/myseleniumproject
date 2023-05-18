@@ -129,18 +129,67 @@ public abstract class TestBase {
         return new File(path).getAbsolutePath();
     }
 
-
-
-
-
-
-
-
-    // This Method is used to click on given element By using JSExecutor
-    public static void clickByJS(WebElement element){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click()",element);
+    /*
+    JAVASCRIPT EXECUTOR METHODS
+    @param WebElement
+    scrolls into that element
+     */
+    public static void scrollIntoViewJS(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
     }
+
+    /*
+    Scroll all the way down
+    */
+    public static void scrollAllTheWayDownJS(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    }
+
+    /*
+    Scroll all the way up
+    */
+    public static void scrollAllTheWayUpJS(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+    }
+
+    /*
+    @param WebElement
+    clicks on that element
+    */
+    public static void clickByJS(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click;",element);
+    }
+
+    /*
+    @param String id of the WebElement we want to locate
+    Locating elements using JavascriptExecutor
+    and returns that WebElement
+    Note that this is NOT common and we should use 8 locators that we learned in selenium
+    */
+    public WebElement locateElementByJS(String idOfElement){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (WebElement)js.executeScript("return document.getElementById('"+idOfElement+"')");
+    }
+
+    /*
+    @param1 input WebElement, @param2 String
+    Type the String in that WebElement
+    */
+    public static void setByValueJS(WebElement inputElement,String text){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value','"+text+"')",inputElement);
+    }
+
+
+
+
+
+
+
 
 
 }

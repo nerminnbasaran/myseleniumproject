@@ -24,6 +24,9 @@ public class Day11_ExtentReportsScreenShot extends TestBase {
 //        When user type “uni” in the search box
         extentTest
                 .pass("Taking the screenshot of the home page")
+                .assignDevice("Mac","Chrome")
+                .assignCategory("Smoke","Regression","Integration")
+                .assignAuthor("Nermin","Neslihan")
                 .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
 //        TAKE SCREENSHOT
         takeScreenshotOfTheEntirePage();
