@@ -87,4 +87,20 @@ public class Day12_JSExecutor extends TestBase {
         WebElement searchIcon = locateElementByJS("nav-search-submit-button");
         clickByJS(searchIcon);
     }
+
+    @Test
+    public void typeWithJS(){
+//        search porcelain tea set on amazon
+        driver.get("https://www.amazon.com");
+
+//        locating the search box using js executor
+        WebElement searchBox = locateElementByJS("twotabsearchbox");
+
+//        type the search box
+        setByValueJS(searchBox,"porcelain tea set");
+
+//        locating search box icon using js executor
+        WebElement searchIcon = locateElementByJS("nav-search-submit-button");
+        clickByJS(searchIcon);
+    }
 }

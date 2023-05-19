@@ -4,11 +4,12 @@ import com.myfirstproject.utilities.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class ContactUs extends TestBase {
 
     @Test
-    public void contactUs(){
+    public void contactUs() throws InterruptedException {
 
 //        1. Launch browser, 2. Navigate to url 'http://automationexercise.com'
         driver.get("http://automationexercise.com");
@@ -29,10 +30,27 @@ public class ContactUs extends TestBase {
         driver.findElement(By.id("message")).sendKeys("I have a problem about online payment");
 
 //        7. Upload file
-        driver.findElement(By.xpath("//input[@type='file']")).click();
+        WebElement chooseAFile = driver.findElement(By.name("upload_file"));
+
+        String pathOfFlower = System.getProperty("user.home")+"/Desktop/flower.jpeg";
+
+        chooseAFile.sendKeys(pathOfFlower);
+
 //        8. Click 'Submit' button
+        WebElement submitButton = driver.findElement(By.xpath("//input[@name='submit']"));
+        clickByJS(submitButton);
+
+        Thread.sleep(5000);
+
 //        9. Click OK button
+//        driver.switchTo().alert().accept();
+
 //        10. Verify success message 'Success! Your details have been submitted successfully.' is visible
+        Assert.assertTrue(driver.findElement(By.xpath("(//div[@style='display: block;'])[1]")).isDisplayed());
+
 //        11. Click 'Home' button and verify that landed to home page successfully
+        driver.findElement(By.xpath("(//*[text()=' Home'])[2]")).click();
+
+        Assert.assertEquals("https://automationexercise.com/",driver.getCurrentUrl());
     }
 }
