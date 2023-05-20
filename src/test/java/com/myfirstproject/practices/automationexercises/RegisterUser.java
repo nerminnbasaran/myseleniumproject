@@ -58,7 +58,7 @@ public class RegisterUser {
 
     @Test
 
-    public void registerUser(){
+    public void registerUser() throws InterruptedException {
 
         //1. Launch browser
         //2. Navigate to url 'http://automationexercise.com'
@@ -76,21 +76,8 @@ public class RegisterUser {
         assertEquals("New User Signup!", verifyLogin);
 
         //6. Enter name and email address
-        Faker faker = new Faker();
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String company = faker.company().name();
-        String address = faker.address().fullAddress();
-        String address2 = faker.address().secondaryAddress();
-        String phoneNumber = faker.phoneNumber().cellPhone();
-        String email = faker.internet().emailAddress();
-        String password = faker.internet().password();
-
-        System.out.println("email = " + email);
-        System.out.println("password = " + password);
-
-        driver.findElement(By.xpath("//input[@name='name']")).sendKeys(firstName);
-        driver.findElement(By.xpath("(//input[@name='email'])[2]")).sendKeys(email);
+        driver.findElement(By.xpath("//input[@name='name']")).sendKeys(Faker.instance().name().firstName());
+        driver.findElement(By.xpath("(//input[@name='email'])[2]")).sendKeys(Faker.instance().internet().emailAddress());
 
         //7. Click 'Signup' button
         driver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
@@ -101,11 +88,8 @@ public class RegisterUser {
 
         //9. Fill details: Title, Name, Email, Password, Date of birth
         driver.findElement(By.xpath("//label[@class='top']")).click();
-        //driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys(name);
 
-        //driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(email);
-
-        driver.findElement(By.xpath("//input[@type='password']")).sendKeys(password);
+        driver.findElement(By.xpath("//input[@type='password']")).sendKeys(Faker.instance().internet().password());
 
         WebElement dayDown = driver.findElement(By.xpath("//select[@id='days']"));
         Select selectDay = new  Select(dayDown);
@@ -128,11 +112,11 @@ public class RegisterUser {
         driver.findElement(By.xpath("//label[@for='optin']")).click();
 
         //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        driver.findElement(By.xpath("//input[@id='first_name']")).sendKeys(firstName);
-        driver.findElement(By.xpath("//input[@id='last_name']")).sendKeys(lastName);
-        driver.findElement(By.xpath("//input[@id='company']")).sendKeys(company);
-        driver.findElement(By.xpath("//input[@id='address1']")).sendKeys(address);
-        driver.findElement(By.xpath("//input[@id='address2']")).sendKeys(address2);
+        driver.findElement(By.xpath("//input[@id='first_name']")).sendKeys(Faker.instance().name().firstName());
+        driver.findElement(By.xpath("//input[@id='last_name']")).sendKeys(Faker.instance().name().lastName());
+        driver.findElement(By.xpath("//input[@id='company']")).sendKeys(Faker.instance().company().name());
+        driver.findElement(By.xpath("//input[@id='address1']")).sendKeys(Faker.instance().address().fullAddress());
+        driver.findElement(By.xpath("//input[@id='address2']")).sendKeys(Faker.instance().address().secondaryAddress());
 
         WebElement countryDown = driver.findElement(By.xpath("//select[@name='country']"));
         Select selectCountry = new Select(countryDown);
@@ -144,7 +128,9 @@ public class RegisterUser {
 
         driver.findElement(By.xpath("//*[@id='zipcode']")).sendKeys("23401");
 
-        driver.findElement(By.xpath("//*[@id='mobile_number']")).sendKeys(phoneNumber);
+        driver.findElement(By.xpath("//*[@id='mobile_number']")).sendKeys("54321");
+
+        Thread.sleep(1000);
 
         //13. Click 'Create Account button'
         driver.findElement(By.xpath("(//*[@type='submit'])[1]")).click();
@@ -161,25 +147,22 @@ public class RegisterUser {
 //          driver.switchTo().frame(7);
 //        WebElement element = driver.findElement(By.xpath("//*[@id='dismiss-button']/div/svg"));
 //        element.click();
-//
-//
-
 
 //        //16. Verify that 'Logged in as username' is visible
-//        String login = driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText();
-//        assertEquals(" Logged in as " + firstName, login);
-//
+//        Assert.assertTrue(driver.findElement(By.xpath("//*[text()=' Logged in as ']")).isDisplayed());
+
+
 //        //17. Click 'Delete Account' button
-//        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a/text()")).click();
+//        driver.findElement(By.xpath("//*[@id=\"header"]/div/div/div/div[2]/div/ul/li[5]/a/text()")).click();
 //
 //        //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
 //        String delete = driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2/b")).getText();
 //        assertEquals("ACCOUNT DELETED!",delete);
 //
 //        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/a")).click();
-//
-//
-//        //Note: I didn't handle open advertise.
+
+
+        //Note: I didn't handle open advertise.
 
 
 
