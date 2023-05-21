@@ -97,7 +97,7 @@ public class Day12_JSExecutor extends TestBase {
         WebElement searchBox = locateElementByJS("twotabsearchbox");
 
 //        type the search box
-        setByValueJS(searchBox,"porcelain tea set");
+        setValueByJS(searchBox,"porcelain tea set");
 
 //        locating search box icon using js executor
         WebElement searchIcon = locateElementByJS("nav-search-submit-button");
