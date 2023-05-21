@@ -83,6 +83,23 @@ public class Day13_ExplicitWait extends TestBase {
         Assert.assertEquals("Hello World!",helloWorld.getText());
     }
 
+    @Test
+    public void explicitWaitTest3(){
+//    Go to https://the-internet.herokuapp.com/dynamic_loading/1
+        driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
+
+//    When user clicks on the Start button
+        WebElement startButton = driver.findElement(By.xpath("//div[@id='start']//button"));
+        startButton.click();
+
+//    WAIT FOR ELEMENT USING EXPLICIT WAIT
+//    THIS IS RECOMMENDED> WE SHOULD USE REUSABLE METHODS IN AUTOMATION
+        WebElement helloWorld = waitForVisibility(driver.findElement(By.xpath("//div[@id='finish']//h4")),20);
+
+//    Then verify the 'Hello World!' Shows up on the screen
+        Assert.assertEquals("Hello World!",helloWorld.getText());
+    }
+
 
 
 

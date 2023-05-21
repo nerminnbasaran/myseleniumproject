@@ -244,7 +244,6 @@ public abstract class TestBase {
         }
     }
 
-
     //======Fluent Wait====
     // params : xpath of teh element , max timeout in seconds, polling in second
     public static WebElement fluentWait(String xpath, int withTimeout, int pollingEvery) {
@@ -253,7 +252,6 @@ public abstract class TestBase {
                 .pollingEvery(Duration.ofSeconds(pollingEvery))//Check for the element every 1 second
                 .withMessage("Ignoring No Such Element Exception")
                 .ignoring(NoSuchElementException.class);
-
 
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         return element;
