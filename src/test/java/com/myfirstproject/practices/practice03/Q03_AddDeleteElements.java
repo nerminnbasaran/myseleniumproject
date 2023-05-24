@@ -1,6 +1,7 @@
 package com.myfirstproject.practices.practice03;
 
 import com.myfirstproject.utilities.TestBase;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,7 @@ public class Q03_AddDeleteElements extends TestBase {
     Click on the "Delete" button 20 times
         Then
     Assert that 20 buttons were deleted.
-  */
+    */
 
     @Test
     public void addDeleteTest(){
@@ -34,8 +35,10 @@ public class Q03_AddDeleteElements extends TestBase {
 
 //    Click on the "Delete" button 20 times
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[.='Delete']"));
+
         int sizeBeforeDelete = deleteButtons.size();
         System.out.println("sizeBeforeDelete = " + sizeBeforeDelete);
+
         for (int i=0; i<20; i++){
             deleteButtons.get(i).click();
         }
@@ -43,6 +46,8 @@ public class Q03_AddDeleteElements extends TestBase {
 //    Assert that 20 buttons were deleted
         int sizeAfterDelete = driver.findElements(By.xpath("//button[.='Delete']")).size();
         System.out.println("sizeAfterDelete = " + sizeAfterDelete);
+
+        Assert.assertEquals(sizeBeforeDelete-20,sizeAfterDelete);
 
     }
 }
