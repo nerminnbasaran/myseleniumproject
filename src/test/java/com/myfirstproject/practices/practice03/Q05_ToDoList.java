@@ -1,6 +1,7 @@
 package com.myfirstproject.practices.practice03;
 
 import com.myfirstproject.utilities.TestBase;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -43,10 +44,20 @@ public class Q05_ToDoList extends TestBase {
 //        REST IS HOMEWORK
 
 //        Strikethrough all todos.
+        List<WebElement> strike = driver.findElements(By.xpath("//li"));
+        for(WebElement w : strike){
+            w.click();
+        }
 
 //        Delete all todos.
+        List<WebElement> trash = driver.findElements(By.xpath("//li//span//i"));
+        for(WebElement w: trash){
+            w.click();
+        }
 
 //        Assert that all todos deleted.
+        System.out.println(driver.findElement(By.xpath("//ul/li")).getSize());
+
 
     }
 }

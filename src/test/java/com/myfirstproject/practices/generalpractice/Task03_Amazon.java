@@ -6,9 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
-public class Amazon extends TestBase {
+public class Task03_Amazon extends TestBase {
 
     @Test
     public void amazonTest() throws InterruptedException {

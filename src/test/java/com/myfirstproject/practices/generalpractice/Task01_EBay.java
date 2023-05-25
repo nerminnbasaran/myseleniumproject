@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class EBay extends TestBase {
+public class Task01_EBay extends TestBase {
         /*
     Go to ebay page
     Click on electronics section
