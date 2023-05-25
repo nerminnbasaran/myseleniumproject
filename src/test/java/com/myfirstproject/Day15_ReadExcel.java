@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Day15_ReadExcel {
     /*
@@ -61,6 +63,17 @@ public class Day15_ReadExcel {
 //        create a map, use a loop to add all countries as key and capitals as value
 //        String country = sheet1.getRow(ROW INDEX).getCell(CELL INDEX).toString();
 //        String capital = sheet1.getRow(ROW INDEX).getCell(CELL INDEX).toString();
+        Map<String,String> capitals = new HashMap();
+        for(int rowNum=1; rowNum<totalRowCount; rowNum++){ //iterete the rows 1 to END
+            String country = sheet1.getRow(rowNum).getCell(0).toString();
+            System.out.println(country);
+            String capital = sheet1.getRow(rowNum).getCell(1).toString();
+            System.out.println(capital);
+            capitals.put(country,capital);
+        }
+        System.out.println(capitals);
+
+
 
 
 
