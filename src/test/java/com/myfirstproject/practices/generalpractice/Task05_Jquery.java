@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Task05_Jquery extends TestBase {
@@ -39,19 +41,20 @@ public class Task05_Jquery extends TestBase {
         animal.click();
 
 //        Print emojis under "Animals and Nature" emoji
-        List<WebElement> emojis = driver.findElements(By.xpath("//div[@id='nature']"));
-        emojis.forEach(t-> System.out.println(t.getText()));
+        WebElement emojis = driver.findElement(By.xpath("//*[@id='nature']//div"));
+        System.out.println(emojis.getText());
+//        List<WebElement> emojis = driver.findElements(By.xpath("//div[@id='nature']"));
+//        emojis.forEach(t-> System.out.println(t.getText()));
+
+//        Go outside iFrame
+        driver.switchTo().defaultContent();
 
 //        Fill the form
-        driver.switchTo().defaultContent();
-        driver.findElement(By.xpath("//input[@id='text']")).sendKeys("Start");
-        driver.findElement(By.xpath("//input[@id='smiles']")).sendKeys("Good");
-        driver.findElement(By.xpath("//input[@id='nature']")).sendKeys("Nature");
-        driver.findElement(By.xpath("//input[@id='food']")).sendKeys("Nut");
-        driver.findElement(By.xpath("//input[@id='activities']")).sendKeys("Run");
-        driver.findElement(By.xpath("//input[@id='places']")).sendKeys("Prison");
-        driver.findElement(By.xpath("//input[@id='symbols']")).sendKeys("Star");
-        driver.findElement(By.xpath("//input[@id='flags']")).sendKeys("People");
+        List<WebElement> allInputs = driver.findElements(By.xpath("//input"));
+        List<String> allWords = new ArrayList<>(Arrays.asList("This","iFrame","example","looks","very","funny","does", "not", "it","?","?"));
+        for(int i = 0; i<allInputs.size(); i++){
+            allInputs.get(i).sendKeys(allWords.get(i));
+        }
 
 //        Press the apply button
         driver.findElement(By.xpath("//button[@id='send']")).click();

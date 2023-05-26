@@ -31,7 +31,7 @@
         <!--      Root : provides level to ALL classes on the project
         By default level = error prints errors and fatal
         level=trace will logs everything-->
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="file"/>
         </Root>

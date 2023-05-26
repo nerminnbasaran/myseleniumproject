@@ -57,7 +57,7 @@ public class Task04_AutomationTesting extends TestBase {
 //       -Assert "You Pressed Cancel" text is displayed
         waitFor(1);
         Assert.assertTrue(driver.findElement(By.xpath("//p[@id='demo']")).getText().contains("You Pressed Cancel"));
-//
+
 //       -Click the "Alert with Textbox" button and then click the "Click the button to demonstrate the prompt box"
         driver.findElement(By.xpath("//a[@href='#Textbox']")).click();
         driver.findElement(By.xpath("//button[@onclick='promptbox()']")).click();

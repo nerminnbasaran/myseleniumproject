@@ -79,12 +79,12 @@ public class Day12_JSExecutor extends TestBase {
         driver.get("https://www.amazon.com");
 
 //        locating the search box using js executor
-        WebElement searchBox = locateElementByJS("twotabsearchbox");
+        WebElement searchBox = locateElementsByJS("twotabsearchbox");
         searchBox.sendKeys("porcelain tea set");
         Thread.sleep(5000);
 
 //        locating search box icon using js executor
-        WebElement searchIcon = locateElementByJS("nav-search-submit-button");
+        WebElement searchIcon = locateElementsByJS("nav-search-submit-button");
         clickByJS(searchIcon);
     }
 
@@ -94,13 +94,13 @@ public class Day12_JSExecutor extends TestBase {
         driver.get("https://www.amazon.com");
 
 //        locating the search box using js executor
-        WebElement searchBox = locateElementByJS("twotabsearchbox");
+        WebElement searchBox = locateElementsByJS("twotabsearchbox");
 
 //        type the search box
         setValueByJS(searchBox,"porcelain tea set");
 
 //        locating search box icon using js executor
-        WebElement searchIcon = locateElementByJS("nav-search-submit-button");
+        WebElement searchIcon = locateElementsByJS("nav-search-submit-button");
         clickByJS(searchIcon);
     }
 }
