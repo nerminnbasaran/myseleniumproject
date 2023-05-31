@@ -1,16 +1,13 @@
 package com.myfirstproject.practices.generalpractice;
 
-import com.myfirstproject.utilities.TestBase;
 import org.apache.poi.ss.usermodel.*;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Task13{
+public class Task13_EarningList {
 
     /*
     Given
@@ -31,16 +28,11 @@ public class Task13{
 
         sheet1.getRow(3).createCell(2).setCellValue("1");
 
-
-
         FileOutputStream fileOutputStream = new FileOutputStream(path);
         workbook.write(fileOutputStream);
 
 
     }
-
-
-
 
 
     //EarningList.xlsx file:
